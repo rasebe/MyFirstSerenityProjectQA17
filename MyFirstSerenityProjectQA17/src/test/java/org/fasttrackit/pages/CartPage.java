@@ -17,4 +17,71 @@ public class CartPage extends PageObject {
     public void clickProceedToCheckout(){
         clickOn(proceedToCheckoutButton);
     }
+
+    @FindBy(css = "#empty_cart_button > span > span")
+    private WebElementFacade emptyCartButton;
+
+    public void clickEmptyCart(){
+        clickOn(emptyCartButton);
+    }
+
+    @FindBy(css = ".page-title h1")
+    private WebElementFacade shoppingCartIsEmptyMsg;
+
+    public boolean checkEmptyCartMsg(String text){
+        return shoppingCartIsEmptyMsg.containsOnlyText(text);
+    }
+    @FindBy(css = "button[title='Continue Shopping'] span>span")
+    private WebElementFacade continueShoppingButton;
+
+    public void clickContinueShopping(){
+        clickOn(continueShoppingButton);
+    }
+
+    @FindBy(css = ".product-name span")
+    private WebElementFacade backToPreviouslyAddedProduct;
+
+    public boolean checkNameOfPreviouslyAdded(String text){
+        return backToPreviouslyAddedProduct.containsOnlyText(text);
+    }
+    @FindBy(css = ".product-cart-actions a")
+    private WebElementFacade editFromCartButton;
+
+    public void clickEditButton(){
+        clickOn(editFromCartButton);
+    }
+
+    @FindBy(css = ".large")
+    private WebElementFacade homepageLogo;
+
+    public void clickHomepageLogo(){
+        clickOn(homepageLogo);
+    }
+
+    @FindBy(css = ".page-title h1")
+    private WebElementFacade shoppingCartMsg;
+
+    public boolean checkIfShoppingCartMsgIsDisplayed(String text){
+        return shoppingCartMsg.containsOnlyText(text);
+    }
+    @FindBy(css = "#coupon_code")
+    private WebElementFacade discountCodesField;
+
+    public void setDiscountField(String discountCode){
+        typeInto(discountCodesField, discountCode);
+    }
+
+    @FindBy(css = "button[title='Apply'] span>span")
+    private WebElementFacade applyButton;
+
+    public void clickApplyButton(){
+        clickOn(applyButton);
+    }
+
+    @FindBy(css = ".error-msg span")
+    private WebElementFacade errorMsgInvalidDiscountCode;
+
+    public boolean checkIfDiscountCodeIsInvalid(String text){
+        return errorMsgInvalidDiscountCode.containsOnlyText(text);
+    }
 }

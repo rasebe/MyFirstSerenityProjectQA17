@@ -36,6 +36,37 @@ public class CartSteps {
     }
     @Step
     public void checkAddedToCartText(String text){
-        Assert.assertTrue(cartPage.checkAddedToCartText(text));
+        Assert.assertTrue(cartPage.checkAddedToCartText(text)); }
+    @Step
+    public void clickEmptyCart(){ cartPage.clickEmptyCart(); }
+    @Step
+    public void checkIfCartIsEmpty(String text){Assert.assertTrue(cartPage.checkEmptyCartMsg(text)); }
+    @Step
+    public void clickContinueShopping(){ cartPage.clickContinueShopping(); }
+    @Step
+    public void checkNameOfLastProductAdded(String text){Assert.assertTrue(cartPage.checkNameOfPreviouslyAdded(text)); }
+    @Step
+    public void clickEditButton(){ cartPage.clickEditButton(); }
+    @Step
+    public void clickHomepageLogo(){cartPage.clickHomepageLogo();}
+    @Step
+    public void clickCartButton(){homePage.clickCartButton();}
+    @Step
+    public void clickViewShoppingCart() {homePage.clickViewCartLink();}
+    @Step
+    public void checkShoppingCartMsg(String text){Assert.assertTrue(cartPage.checkIfShoppingCartMsgIsDisplayed(text));}
+    @Step
+    public void setDiscountCode(String text){cartPage.setDiscountField(text);}
+    @Step
+    public void clickApplyLink() {cartPage.clickApplyButton();}
+    @Step
+    public void checkDiscountCode (String text){Assert.assertTrue(cartPage.checkIfDiscountCodeIsInvalid(text));}
+    @Step
+    public void addProductToCart(){
+        navigateToHomepage();
+        clickSaleLink();
+        clickViewDetails();
+        selectProductCharacteristics();
+        clickAddToCart();
     }
 }

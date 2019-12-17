@@ -18,12 +18,45 @@ public class CartTest {
     CartSteps cartSteps;
 
     @Test
-    public void cartTest(){
+    public void addToCartTest(){
       cartSteps.navigateToHomepage();
       cartSteps.clickSaleLink();
       cartSteps.clickViewDetails();
       cartSteps.selectProductCharacteristics();
       cartSteps.clickAddToCart();
       cartSteps.checkAddedToCartText("Racer Back Maxi Dress was added to your shopping cart.");
+    }
+    @Test
+    public void emptyCartTest(){
+        cartSteps.addProductToCart();
+        cartSteps.clickEmptyCart();
+        cartSteps.checkIfCartIsEmpty("SHOPPING CART IS EMPTY");
+    }
+    @Test
+    public void continueShoppingFromCartTest(){
+        cartSteps.addProductToCart();
+        cartSteps.clickContinueShopping();
+        cartSteps.checkNameOfLastProductAdded("RACER BACK MAXI DRESS");
+    }
+    @Test
+    public void editFromCartTest(){
+        cartSteps.addProductToCart();
+        cartSteps.clickEditButton();
+        cartSteps.checkNameOfLastProductAdded("RACER BACK MAXI DRESS");
+    }
+    @Test
+    public void viewShoppingCartTest(){
+        cartSteps.addProductToCart();
+        cartSteps.clickHomepageLogo();
+        cartSteps.clickCartButton();
+        cartSteps.clickViewShoppingCart();
+        cartSteps.checkShoppingCartMsg("SHOPPING CART");
+    }
+    @Test
+    public void invalidDiscountCodeTest(){
+        cartSteps.addProductToCart();
+        cartSteps.setDiscountCode("qwerty");
+        cartSteps.clickApplyLink();
+        cartSteps.checkDiscountCode("Coupon code \"qwerty\" is not valid.");
     }
 }

@@ -26,6 +26,12 @@ public class HomePage extends PageObject {
     @FindBy(css=".level0[href*='sale.html']")
     private WebElementFacade saleLink;
 
+    @FindBy(css=".skip-link.skip-cart .label")
+    private WebElementFacade cartButton;
+
+    @FindBy(css=".cart-link")
+    private WebElementFacade viewShoppingCartLink;
+
     public void clickAccountLink() {
         clickOn(accountLink);
     }
@@ -38,10 +44,16 @@ public class HomePage extends PageObject {
     public void fillSearchField(String search){
         typeInto(searchField, search);
     }
-    public void clickSearch(){
+    public void clickSearchButton(){
         clickOn(searchButton);
     }
     public void clickSaleLink() {
         clickOn(saleLink);
+    }
+    public void clickCartButton() {
+        clickOn(cartButton);
+    }
+    public void clickViewCartLink() {
+        clickOn(viewShoppingCartLink);
     }
 }
