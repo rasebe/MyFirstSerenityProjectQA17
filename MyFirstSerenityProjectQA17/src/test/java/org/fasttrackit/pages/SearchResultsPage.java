@@ -29,15 +29,18 @@ public class SearchResultsPage extends PageObject {
 
     public boolean checkProductsPrices() {
         int priceCurrent;
-        int priceLast;
+        int priceNext;
         for (int i = 0; i <= listOfProducts.size() - 2; i++) {
             try {
-                String priceI = listOfProducts.get(i).findBy(By.cssSelector(".price")).getText().replace(",00 RON", "").trim();
+                String priceI = listOfProducts.get(i).findBy(By.cssSelector(".price:not([id*='old'])"))
+                        .getText().replace(",00 RON", "").trim();
                 priceCurrent = Integer.valueOf(priceI);
-                String priceI2 = listOfProducts.get(i+1).findBy(By.cssSelector(".price")).getText().replace(",00 RON", "").trim();
-                priceLast = Integer.valueOf(priceI2);
 
-                if (priceCurrent > priceLast) {
+                String priceI2 = listOfProducts.get(i + 1).findBy(By.cssSelector(".price:not([id*='old'])"))
+                        .getText().replace(",00 RON", "").trim();
+                priceNext = Integer.valueOf(priceI2);
+
+                if (priceCurrent > priceNext) {
                     return false;
                 }
             } catch (NoSuchElementException e) {
